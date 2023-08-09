@@ -2,7 +2,7 @@
   "name": "lightweight-sedentary-reminder",
   "displayName": "Lightweight-Sedentary-Reminder",
   "description": "轻量级的久坐提醒",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "publisher": "LongYinStudio",
   "icon": "icon.jpg",
   "repository": {
@@ -33,7 +33,18 @@
         "command": "extension.stopWork",
         "title": "stopWork"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "lightweight-sedentary-reminder Setting",
+      "properties": {
+        "reminder.interval": {
+          "type": "number",
+          "default": 30,
+          "description": "提醒间隔（分钟）"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",

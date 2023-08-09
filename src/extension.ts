@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { Utility } from "./util";
 
 let inactiveTimer: NodeJS.Timeout | undefined;
 
@@ -16,10 +17,11 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 const handleStart = () => {
-  let time = 30;
+  let time = Utility.getConfiguration().interval || 30;
   let realTime = time * 60 * 1000;
+  vscode.window.showInformationMessage(`开始工作，时间间隔为${time}min`);
   inactiveTimer = setInterval(() => {
-    vscode.window.showInformationMessage("已经工作30min了");
+    vscode.window.showInformationMessage(`已经工作${time}min了`);
   }, realTime);
 };
 
@@ -27,4 +29,6 @@ const handleStop = () => {
   clearInterval(inactiveTimer);
 };
 
-export function deactivate() {}
+export function deactivate() {
+  clearInterval(inactiveTimer);
+}
