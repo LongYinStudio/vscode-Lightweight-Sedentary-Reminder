@@ -1,16 +1,30 @@
 import * as vscode from "vscode";
 
+let inactiveTimer: NodeJS.Timeout | undefined;
+
 export function activate(context: vscode.ExtensionContext) {
-  console.log(
-    'Congratulations, your extension "lightweight-sedentary-reminder" is now active!'
+  context.subscriptions.push(
+    vscode.commands.registerCommand("extension.startWork", () => {
+      handleStart();
+    })
   );
-  let disposable = vscode.commands.registerCommand(
-    "lightweight-sedentary-reminder.toast",
-    () => {
-      vscode.window.showInformationMessage("提示框");
-    }
+  context.subscriptions.push(
+    vscode.commands.registerCommand("extension.stopWork", () => {
+      handleStop();
+    })
   );
-  context.subscriptions.push(disposable);
 }
+
+const handleStart = () => {
+  let time = 30;
+  let realTime = time * 60 * 1000;
+  inactiveTimer = setInterval(() => {
+    vscode.window.showInformationMessage("已经工作30min了");
+  }, realTime);
+};
+
+const handleStop = () => {
+  clearInterval(inactiveTimer);
+};
 
 export function deactivate() {}

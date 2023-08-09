@@ -2,7 +2,7 @@
   "name": "lightweight-sedentary-reminder",
   "displayName": "Lightweight-Sedentary-Reminder",
   "description": "轻量级的久坐提醒",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "publisher": "LongYinStudio",
   "icon": "icon.jpg",
   "repository": {
@@ -26,8 +26,12 @@
   "contributes": {
     "commands": [
       {
-        "command": "lightweight-sedentary-reminder.toast",
-        "title": "toast"
+        "command": "extension.startWork",
+        "title": "startWork"
+      },
+      {
+        "command": "extension.stopWork",
+        "title": "stopWork"
       }
     ]
   },
