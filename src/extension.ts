@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { Utility } from "./util";
+import { Toast } from "./toast";
 
 let inactiveTimer: NodeJS.Timeout | undefined;
 
@@ -19,9 +20,9 @@ export function activate(context: vscode.ExtensionContext) {
 const handleStart = () => {
   let time = Utility.getConfiguration().interval || 30;
   let realTime = time * 60 * 1000;
-  vscode.window.showInformationMessage(`开始工作，时间间隔为${time}min`);
+  Toast.show(`开始工作，时间间隔为${time}min`);
   inactiveTimer = setInterval(() => {
-    vscode.window.showInformationMessage(`已经工作${time}min了`);
+    Toast.show(`已经工作${time}min了`);
   }, realTime);
 };
 

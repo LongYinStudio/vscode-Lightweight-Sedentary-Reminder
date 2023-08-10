@@ -1,5 +1,11 @@
 # Change Log
 
+## [3.1.0]
+
+### Feature
+
+- 将 showInformationMessage 改为模态框
+
 ## [3.0.0]
 
 ### Feature
